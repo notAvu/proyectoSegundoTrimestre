@@ -7,13 +7,15 @@ public class Pagina {
 	  private int pageRank;
 	  private String[] palabrasClave;
 	  private String hipervinculo;
+	  
 	 
 	  	//Metodos
 	  
-	  	public Pagina(String url,String descripcion, int pageRank, String hipervinculo,String[] palabrasClave) 
+	  	public Pagina(String url,String descripcion, int pageRank, Pagina link,String[] palabrasClave) 
 		{
 			 this.descripcion=descripcion;
-			 this.hipervinculo=hipervinculo;
+			 this.hipervinculo=link.getUrl();
+			 link.setPageRank(getPageRank()+1);
 			 this.pageRank=pageRank;
 			 this.url=url;
 			 this.palabrasClave=palabrasClave;			 
@@ -64,19 +66,17 @@ public class Pagina {
 			return hipervinculo;
 		}
 	
-		public void setHipervinculo(String hipervinculo) 
+		public void setHipervinculo(Pagina hipervinculo) 
 		{
-			this.hipervinculo = hipervinculo;
+			this.hipervinculo = hipervinculo.getUrl();
 		}
-
 		
 		/**
 		 * Precondiciones: El array busqueda y el array palabras clave no puede estar vacios
-		 * Entradas: un array de palabras clave a buscar
 		 * Postcondiciones: Ninguna
-		 * Salida: Ninguna
+		 * 
 		 * @param busqueda
-		 * @return 
+		 * @return coincidencias
 		 */
 		public int getCoincidencias(String busqueda[]) 
 		{
