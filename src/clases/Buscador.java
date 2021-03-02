@@ -20,11 +20,10 @@ public class Buscador {
 	 * @param busqueda
 	 * @return keywords
 	 */
-	public String[] toArray(String busqueda) 
-	{
-		String[] keywords=busqueda.split("\s");
-		return keywords;
-	}
+	/*
+	 * public String[] toArray(String busqueda) { String[]
+	 * keywords=busqueda.split("\s"); return keywords; }
+	 */
 	
 	//métodos para agregar página
 	
@@ -72,4 +71,21 @@ public class Buscador {
 		}
 	}
 	
+	public void burbuja(String[] palabras)
+	{
+		int i, j;
+		Pagina aux=null;
+		for (i=0 ; i< memoria.length -1 ; i++) 
+		{
+			for (j = palabras.length -1 ; j > i ; j--)
+				{
+					if (memoria[j].getCoincidencias(palabras) < memoria[j-1].getCoincidencias(palabras))
+					{
+						aux = memoria[j];
+						memoria[j] = memoria[j-1];
+						memoria[j-1] = aux;
+					}
+				}
+		}
+	}	
 }

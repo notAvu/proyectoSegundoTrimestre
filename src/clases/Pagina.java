@@ -93,5 +93,4 @@ public class Pagina {
 			}
 			return coincidencias;
 		}
-		
 }
