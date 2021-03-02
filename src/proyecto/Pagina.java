@@ -15,7 +15,7 @@ public class Pagina {
 		{
 			 this.descripcion=descripcion;
 			 this.hipervinculo=link.getUrl();
-			 link.setPageRank(getPageRank()+1);
+			 link.setPageRank(link.getPageRank()+1);
 			 this.pageRank=pageRank;
 			 this.url=url;
 			 this.palabrasClave=palabrasClave;			 
