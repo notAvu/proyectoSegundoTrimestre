@@ -2,16 +2,30 @@ package clases;
 
 public class Buscador {
 	//atributos
-	private Pagina[] memoria=new Pagina[5];
-	//TODO metodo para ordenar el array memoria (sin utilizar .sort)
+	private Pagina[] memoria;
 	
 	//metodos
+	public Buscador(int size) 
+	{
+		memoria=new Pagina[size];
+	}
+	
 	public Pagina[] getMemoria() {
 		return memoria;
 	}
 
 	public void setMemoria(Pagina[] memoria) {
 		this.memoria = memoria;
+	}
+	//TODO Documentar
+	public String toString()
+	{
+		String print="";
+		for(int i =0;i<memoria.length;i++)
+		{
+			print=print+" "+memoria[i].toString();
+		}
+		return print;
 	}
 	
 	//métodos para busqueda de páginas
@@ -70,20 +84,36 @@ public class Buscador {
 			memoria[encontrarVacio()]=page;
 		}
 	}
-	
-	public void burbuja(String[] palabras)
+	/**
+	 * Ordena la memoria con el metodo de burbuja en base a el numero de palabras que coinciden entre la busqueda y las palabras clave.
+	 * Si dos p�ginas tienen el mismo numero de coincidencias se ordenan en base al pagerank
+	 * Precondiciones: no puede haber elementos null en el array memoria.
+	 * Postcondiciones: el array debe haber quedado ordenado ascendentemente en funcion de las coincidencias en la busqueda y el pagerank
+	 * @param palabras
+	 */
+/*TODO cubrir el caso de que haya valores null en el array (Una opcion es hacer que el array sea inicialmente de un solo elemento e ir incrementando
+ *  para lo que habria que eliminar algun metodo innecesario)
+ */
+	public void ordenarBusqueda(String[] palabras)
 	{
-		int i, j;
-		Pagina aux=null;
-		for (i=0 ; i< memoria.length -1 ; i++) 
+		Pagina aux;
+		for (int i=0 ; i< memoria.length -1 ; i++) 
 		{
-			for (j = palabras.length -1 ; j > i ; j--)
+			for (int j = memoria.length -1 ; j > i ; j--)
 				{
 					if (memoria[j].getCoincidencias(palabras) < memoria[j-1].getCoincidencias(palabras))
 					{
 						aux = memoria[j];
 						memoria[j] = memoria[j-1];
 						memoria[j-1] = aux;
+					}else if(memoria[j].getCoincidencias(palabras) == memoria[j-1].getCoincidencias(palabras)) 
+					{
+						if (memoria[j].getPageRank() < memoria[j-1].getPageRank())
+						{
+							aux = memoria[j];
+							memoria[j] = memoria[j-1];
+							memoria[j-1] = aux;
+						}
 					}
 				}
 		}

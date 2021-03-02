@@ -20,6 +20,14 @@ public class Pagina {
 			 this.url=url;
 			 this.palabrasClave=palabrasClave;			 
 		}
+	  	public Pagina(String url,String descripcion, int pageRank,String[] palabrasClave) 
+		{
+			 this.descripcion=descripcion;
+			 this.hipervinculo="";
+			 this.pageRank=pageRank;
+			 this.url=url;
+			 this.palabrasClave=palabrasClave;			 
+		}
 
 		public String getUrl() 
 		{
@@ -71,6 +79,14 @@ public class Pagina {
 			this.hipervinculo = hipervinculo.getUrl();
 		}
 		
+		//TODO Documentar
+		public String toString() 
+		{
+			String print=this.getUrl();
+			String desc=this.getDescripcion();
+
+			return print+" "+desc;
+		}
 		/**
 		 * Precondiciones: El array busqueda y el array palabras clave no puede estar vacios
 		 * Postcondiciones: Ninguna
