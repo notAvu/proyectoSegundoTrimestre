@@ -3,7 +3,7 @@ package clases;
 public class Buscador {
 	//atributos
 	private Pagina[] memoria=new Pagina[5];
-	//TODO metodo para ordenar el array memoria
+	//TODO metodo para ordenar el array memoria (sin utilizar .sort)
 	
 	//metodos
 	public Pagina[] getMemoria() {
