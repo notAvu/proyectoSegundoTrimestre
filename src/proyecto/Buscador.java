@@ -3,7 +3,7 @@ package proyecto;
 public class Buscador {
 	//atributos
 	private Pagina[] memoria=new Pagina[5];
-
+	//TODO metodo para ordenar el array memoria
 	
 	//metodos
 	public Pagina[] getMemoria() {
@@ -14,7 +14,7 @@ public class Buscador {
 		this.memoria = memoria;
 	}
 	
-	//mÈtodos para busqueda de p·ginas
+	//m√©todos para busqueda de p√°ginas
 	/**
 	 * 
 	 * @param busqueda
@@ -26,7 +26,7 @@ public class Buscador {
 		return keywords;
 	}
 	
-	//mÈtodos para agregar p·gina
+	//m√©todos para agregar p√°gina
 	
 	/**
 	 * Recorre el array para comprobar si hay algun espacio vacio en el array
@@ -51,7 +51,7 @@ public class Buscador {
 	/**
 	 * Agrega un objeto de la clase pagina (page) al array memoria. Si el array memoria no es lo suficientemente grande
 	 * crea un nuevo array con el contenido del que ya existe para sustituirlo por este (Lo que viene siendo aumentar
-	 * el tamaÒo del array en uno pero con mas pasos)
+	 * el tama√±o del array en uno pero con mas pasos)
 	 * Precondiciones: el objeto page no puede ser null
 	 * Postcondiciones: ninguna
 	 * @param page
