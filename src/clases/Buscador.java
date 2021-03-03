@@ -1,13 +1,17 @@
 package clases;
 
+/*TODO cubrir el caso de que haya valores null en el array (Una opcion es hacer que el array sea inicialmente de un solo elemento e ir incrementando
+ *  para lo que habria que eliminar algun metodo innecesario)
+ */
+
 public class Buscador {
 	//atributos
 	private Pagina[] memoria;
 	
 	//metodos
-	public Buscador(int size) 
+	public Buscador() 
 	{
-		memoria=new Pagina[size];
+		memoria=new Pagina[1];
 	}
 	
 	public Pagina[] getMemoria() {
@@ -17,7 +21,14 @@ public class Buscador {
 	public void setMemoria(Pagina[] memoria) {
 		this.memoria = memoria;
 	}
-	//TODO Documentar
+/**
+ * Devuelve la descripcion de cada una de las páginas almacenadas en la memoria llamando 
+ * al método toString de cada página del array
+ * Precondiciones: La memoria no puede estar vacia
+ * Postcondiciones: Ninguna
+ * 
+ * @return print 
+ */
 	public String toString()
 	{
 		String print="";
@@ -78,7 +89,8 @@ public class Buscador {
 			{
 					newMemoria[i]=memoria[i];
 			}
-			newMemoria[newMemoria.length]=page;
+			newMemoria[newMemoria.length-1]=page;
+			memoria=newMemoria;
 		}else 
 		{
 			memoria[encontrarVacio()]=page;
@@ -91,9 +103,7 @@ public class Buscador {
 	 * Postcondiciones: el array debe haber quedado ordenado ascendentemente en funcion de las coincidencias en la busqueda y el pagerank
 	 * @param palabras
 	 */
-/*TODO cubrir el caso de que haya valores null en el array (Una opcion es hacer que el array sea inicialmente de un solo elemento e ir incrementando
- *  para lo que habria que eliminar algun metodo innecesario)
- */
+
 	public void ordenarBusqueda(String[] palabras)
 	{
 		Pagina aux;

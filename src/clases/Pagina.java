@@ -23,7 +23,7 @@ public class Pagina {
 	  	public Pagina(String url,String descripcion, int pageRank,String[] palabrasClave) 
 		{
 			 this.descripcion=descripcion;
-			 this.hipervinculo="";
+			 this.hipervinculo="Vacio";
 			 this.pageRank=pageRank;
 			 this.url=url;
 			 this.palabrasClave=palabrasClave;			 
@@ -79,13 +79,20 @@ public class Pagina {
 			this.hipervinculo = hipervinculo.getUrl();
 		}
 		
-		//TODO Documentar
+		/**
+		 * Devuelve la Url del objeto junto a su descripcion
+		 * 
+		 * Precondiciones: ninguna
+		 * Postcondiciones: ninguna
+		 * 
+		 * @return url y descripcion (strings)
+		 */
 		public String toString() 
 		{
-			String print=this.getUrl();
+			String url=this.getUrl();
 			String desc=this.getDescripcion();
 
-			return print+" "+desc;
+			return url+" "+desc;
 		}
 		/**
 		 * Precondiciones: El array busqueda y el array palabras clave no puede estar vacios
