@@ -1,9 +1,13 @@
 package clases;
 
-/*TODO cubrir el caso de que haya valores null en el array (Una opcion es hacer que el array sea inicialmente de un solo elemento e ir incrementando
- *  para lo que habria que eliminar algun metodo innecesario)
+/**
+ * La clase contendra las paginas a las que el buscador puede acceder y las funcionalidades 
+ * necesarias para agregar y buscar las paginas.  
+ * 
+ * @version 1.0
+ * @author afernandez acandela mgomez thuecas
+ *
  */
-
 public class Buscador {
 	//atributos
 	private Pagina[] memoria;
@@ -39,63 +43,7 @@ public class Buscador {
 		return print;
 	}
 	
-	//m√©todos para busqueda de p√°ginas
-	/**
-	 * 
-	 * @param busqueda
-	 * @return keywords
-	 */
-	/*
-	 * public String[] toArray(String busqueda) { String[]
-	 * keywords=busqueda.split("\s"); return keywords; }
-	 */
-	
-	//m√©todos para agregar p√°gina
-	
-	/**
-	 * Recorre el array para comprobar si hay algun espacio vacio en el array
-	 * 
-	 * Precondiciones:ninguna
-	 * Postcondiciones:ninguna
-	 * @return hueco
-	 */
-	public int encontrarVacio() {
-		int hueco=-1;
-		for(int i=0; i<memoria.length;i++) 
-		{
-			if(memoria[i]==null) 
-			{
-				hueco=i;
-				break;
-			}
-		}
-		return hueco;
-	}
-	
-	/**
-	 * Agrega un objeto de la clase pagina (page) al array memoria. Si el array memoria no es lo suficientemente grande
-	 * crea un nuevo array con el contenido del que ya existe para sustituirlo por este (Lo que viene siendo aumentar
-	 * el tama√±o del array en uno pero con mas pasos)
-	 * Precondiciones: el objeto page no puede ser null
-	 * Postcondiciones: ninguna
-	 * @param page
-	 */
-	public void agregarPagina(Pagina page)
-	{
-		if(encontrarVacio()==-1) 
-		{
-			Pagina[] newMemoria= new Pagina[memoria.length+1];
-			for(int i=0; i<memoria.length;i++) 
-			{
-					newMemoria[i]=memoria[i];
-			}
-			newMemoria[newMemoria.length-1]=page;
-			memoria=newMemoria;
-		}else 
-		{
-			memoria[encontrarVacio()]=page;
-		}
-	}
+	//Metodos para busqueda de paginas
 	/**
 	 * Ordena la memoria con el metodo de burbuja en base a el numero de palabras que coinciden entre la busqueda y las palabras clave.
 	 * Si dos p·ginas tienen el mismo numero de coincidencias se ordenan en base al pagerank
@@ -104,28 +52,66 @@ public class Buscador {
 	 * @param palabras
 	 */
 
-	public void ordenarBusqueda(String[] palabras)
+	public Pagina[] ordenarBusqueda(String[] palabras)
 	{
 		Pagina aux;
-		for (int i=0 ; i< memoria.length -1 ; i++) 
+		Pagina[] memoriaAux = new Pagina[memoria.length];
+		/* copiamos el array para no modificar el original y asi poder implementar posibles 
+		 *funciones en el futuro que dependan del orden original de las p·ginas en el array memoria
+		 */
+		for (int i=0 ; i< memoriaAux.length -1 ; i++) 
 		{
-			for (int j = memoria.length -1 ; j > i ; j--)
+			for (int j = memoriaAux.length -1 ; j > i ; j--)
 				{
-					if (memoria[j].getCoincidencias(palabras) < memoria[j-1].getCoincidencias(palabras))
+					if (memoriaAux[j].getCoincidencias(palabras) < memoriaAux[j-1].getCoincidencias(palabras))
 					{
-						aux = memoria[j];
-						memoria[j] = memoria[j-1];
-						memoria[j-1] = aux;
-					}else if(memoria[j].getCoincidencias(palabras) == memoria[j-1].getCoincidencias(palabras)) 
+						aux = memoriaAux[j];
+						memoriaAux[j] = memoriaAux[j-1];
+						memoriaAux[j-1] = aux;
+					}else if(memoriaAux[j].getCoincidencias(palabras) == memoriaAux[j-1].getCoincidencias(palabras)) 
 					{
-						if (memoria[j].getPageRank() < memoria[j-1].getPageRank())
+						if (memoriaAux[j].getPageRank() < memoriaAux[j-1].getPageRank())
 						{
-							aux = memoria[j];
-							memoria[j] = memoria[j-1];
-							memoria[j-1] = aux;
+							aux = memoriaAux[j];
+							memoriaAux[j] = memoriaAux[j-1];
+							memoriaAux[j-1] = aux;
 						}
 					}
 				}
 		}
+		return memoriaAux;
+	}
+	
+	//Metodos para agregar pagina
+	
+	/**(Metodo inutil)
+	 * Recorre el array para comprobar si hay algun espacio vacio en el array
+	 * 
+	 * Precondiciones:ninguna
+	 * Postcondiciones:ninguna
+	 * @return hueco
+	 *
+	 *
+	 * public int encontrarVacio() { int hueco=-1; for(int i=0;
+	 * i<memoria.length;i++) { if(memoria[i]==null) { hueco=i; break; } } return
+	 * hueco; }
+	 */
+	
+	/**
+	 * Agrega un objeto de la clase pagina (page) pasada por parametro al array memoria. Para ello aumenta el tamaÒo de este en 1 
+	 * y aÒade la pagina en el nuevo espacio
+	 * Precondiciones: el objeto page no puede ser null
+	 * Postcondiciones: ninguna
+	 * @param page
+	 */
+	public void agregarPagina(Pagina page)
+	{
+			Pagina[] newMemoria= new Pagina[memoria.length+1];
+			for(int i=0; i<memoria.length;i++) 
+			{
+					newMemoria[i]=memoria[i];
+			}
+			newMemoria[newMemoria.length-1]=page;
+			memoria=newMemoria;
 	}	
 }
