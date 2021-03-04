@@ -47,7 +47,7 @@ public class Menu {
 				//boolean rendirse=true;
 				break;
 			}
-			default:
+			default: 
 				System.out.println("Ese valor no es valido.");
 				break;
 			}
