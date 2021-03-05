@@ -47,7 +47,7 @@ public class Menu {
 				pageRank=sc.nextInt();
 				System.out.println("\n -Indique el listado de palabras clave");
 				palabrasClaves=sc.next();
-				String[] elNombreQueLeQuierasPoner= palabrasClaves.split("\s");
+				String[] palabras= palabrasClaves.split("\s");
 				System.out.println("\n -Pagina hacia la que enlaza (Si no enlaza a ninguna pagina, deje en blanco la respuesta):");
 				
 				//Metodos para  hipervinculo, luego llamamos al metodo para dar de alta.
