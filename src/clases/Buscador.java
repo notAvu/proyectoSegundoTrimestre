@@ -4,7 +4,7 @@ package clases;
  * La clase contendra las paginas a las que el buscador puede acceder y las
  * funcionalidades necesarias para agregar y buscar las paginas.
  * 
- * @version 1.0
+ * @version 1.1
  * @author afernandez acandela mgomez thuecas
  *
  */
@@ -40,7 +40,6 @@ public class Buscador {
 		return print;
 	}
 
-	// Metodos para busqueda de paginas
 	/**
 	 * Ordena la memoria con el metodo de burbuja en base a el numero de palabras
 	 * que coinciden entre la busqueda y las palabras clave. Si dos páginas tienen
@@ -52,44 +51,17 @@ public class Buscador {
 	 * @param palabras
 	 */
 
-	/*
-	 * public Pagina[] ordenarBusqueda(String[] palabras) { Pagina aux; Pagina[]
-	 * memoriaAux = new Pagina[memoria.length]; copiamos el array para no modificar
-	 * el original y asi poder implementar posibles funciones en el futuro que
-	 * dependan del orden original de las páginas en el array memoria
-	 * 
-	 * for (int i=0 ; i< memoriaAux.length -1 ; i++) { for (int j =
-	 * memoriaAux.length -1 ; j > i ; j--) { if
-	 * (memoriaAux[j].getCoincidencias(palabras) <
-	 * memoriaAux[j-1].getCoincidencias(palabras)) { aux = memoriaAux[j];
-	 * memoriaAux[j] = memoriaAux[j-1]; memoriaAux[j-1] = aux; }else
-	 * if(memoriaAux[j].getCoincidencias(palabras) ==
-	 * memoriaAux[j-1].getCoincidencias(palabras)) { if (memoriaAux[j].getPageRank()
-	 * < memoriaAux[j-1].getPageRank()) { aux = memoriaAux[j]; memoriaAux[j] =
-	 * memoriaAux[j-1]; memoriaAux[j-1] = aux; } } } } return memoriaAux; }
-	 */
 
-	// Metodos para agregar pagina
-
-	/**
-	 * (Metodo inutil) Recorre el array para comprobar si hay algun espacio vacio en
-	 * el array
-	 * 
-	 * Precondiciones:ninguna Postcondiciones:ninguna
-	 * 
-	 * @return hueco
-	 *
-	 *
-	 *         public int encontrarVacio() { int hueco=-1; for(int i=0;
-	 *         i<memoria.length;i++) { if(memoria[i]==null) { hueco=i; break; } }
-	 *         return hueco; }
-	 */
 
 	/**
 	 * Agrega un objeto de la clase pagina (page) pasada por parametro al array
 	 * memoria. Para ello aumenta el tamaño de este en 1 y añade la pagina en el
-	 * nuevo espacio Precondiciones: el objeto page no puede ser null
-	 * Postcondiciones: ninguna
+	 * nuevo espacio 
+	 * 
+	 * Entrada:objeto de la clase Pagina
+	 * Salida:ninguna
+	 * Precondiciones: el objeto page no puede ser null
+	 * Postcondiciones: el array memoria debe ser un nuevo array igual que el original pero con una pagina mas (la que se ha añadido)
 	 * 
 	 * @param page
 	 */

@@ -3,17 +3,17 @@ package clases;
  * Contiene los datos de paginas web, su enlace, una breve descripcion, su pagerank, 
  * una serie de palabras clave para facilitar la busqueda, y un link a otra pagina (que puede tener o no).
  * 
- * @version 1.0
+ * @version 1.1
  * @author afernandez acandela mgomez thuecas
  *
  */
 public class Pagina {
 		//Atributos
-	  private String url;
-	  private String descripcion;
-	  private int pageRank;
-	  private String[] palabrasClave;
-	  private String hipervinculo;
+	  private String url;//Consultable, Modificable 
+	  private String descripcion;//Consultable, Modificable 
+	  private int pageRank;//Consultable, Modificable 
+	  private String[] palabrasClave;//Consultable, Modificable 
+	  private String hipervinculo;//Consultable, Modificable 
 	  
 	 
 	  	//Metodos
@@ -93,6 +93,8 @@ public class Pagina {
 		/**
 		 * Devuelve la Url del objeto junto a su descripcion
 		 * 
+		 * Entrada:ninguna
+		 * Salida:La string devolver 
 		 * Precondiciones: ninguna
 		 * Postcondiciones: ninguna
 		 * 
@@ -102,10 +104,12 @@ public class Pagina {
 		{
 			String url=this.getUrl();
 			String desc=this.getDescripcion();
-
-			return url+" "+desc;
+			String devolver=url+" "+desc;
+			return devolver;
 		}
 		/**
+		 * Entrada:el array busqueda
+		 * Salida:el numero de coincidencias con las palabras clave  
 		 * Precondiciones: El array busqueda y el array palabras clave no puede estar vacios
 		 * Postcondiciones: Ninguna
 		 * 

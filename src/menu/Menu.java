@@ -1,6 +1,15 @@
 package menu;
 
+/**
+ * Esta clase opera como una interfaz entre usuario y programa
+ * 
+ * @version 1.1
+ * @author afernandez acandela mgomez thuecas
+ *
+ */
 import java.util.Scanner;
+
+import clases.Buscador;
 
 public class Menu {
 	
