@@ -14,7 +14,7 @@ public class Buscador {
 
 	// metodos
 	public Buscador() {
-		memoria = new Pagina[1];
+		memoria = new Pagina[0];
 	}
 
 	public Pagina[] getMemoria() {
@@ -26,8 +26,8 @@ public class Buscador {
 	}
 
 	/**
-	 * Devuelve la descripcion de cada una de las páginas almacenadas en la memoria
-	 * llamando al método toString de cada página del array Precondiciones: La
+	 * Devuelve la descripcion de cada una de las pï¿½ginas almacenadas en la memoria
+	 * llamando al mï¿½todo toString de cada pï¿½gina del array Precondiciones: La
 	 * memoria no puede estar vacia Postcondiciones: Ninguna
 	 * 
 	 * @return print
@@ -42,7 +42,7 @@ public class Buscador {
 
 	/**
 	 * Ordena la memoria con el metodo de burbuja en base a el numero de palabras
-	 * que coinciden entre la busqueda y las palabras clave. Si dos páginas tienen
+	 * que coinciden entre la busqueda y las palabras clave. Si dos pï¿½ginas tienen
 	 * el mismo numero de coincidencias se ordenan en base al pagerank
 	 * Precondiciones: no puede haber elementos null en el array memoria.
 	 * Postcondiciones: el array debe haber quedado ordenado ascendentemente en
@@ -55,13 +55,13 @@ public class Buscador {
 
 	/**
 	 * Agrega un objeto de la clase pagina (page) pasada por parametro al array
-	 * memoria. Para ello aumenta el tamaño de este en 1 y añade la pagina en el
+	 * memoria. Para ello aumenta el tamaï¿½o de este en 1 y aï¿½ade la pagina en el
 	 * nuevo espacio 
 	 * 
 	 * Entrada:objeto de la clase Pagina
 	 * Salida:ninguna
 	 * Precondiciones: el objeto page no puede ser null
-	 * Postcondiciones: el array memoria debe ser un nuevo array igual que el original pero con una pagina mas (la que se ha añadido)
+	 * Postcondiciones: el array memoria debe ser un nuevo array igual que el original pero con una pagina mas (la que se ha aï¿½adido)
 	 * 
 	 * @param page
 	 */
@@ -73,4 +73,114 @@ public class Buscador {
 		newMemoria[newMemoria.length - 1] = page;
 		memoria = newMemoria;
 	}
+
+	private int tamanoArray(String[] palabras) {
+
+		int tamanoArray = 0;
+
+		for(int i = 0; i < this.memoria.length; i++) {
+
+			if(this.memoria[i].getCoincidencias(palabras) >= 1) {
+
+				tamanoArray++;
+
+			}
+
+		}
+		return tamanoArray;
+	}
+
+	private Pagina[] obtenerBusqueda(String[] palabras)
+	{
+
+		Pagina[] filtrado = new Pagina[this.tamanoArray(palabras)];
+		int indice = 0;
+
+		for(int i = 0; i < this.memoria.length; i++) {
+
+			if(this.memoria[i].getCoincidencias(palabras) >= 1) {
+
+				filtrado[indice] = this.memoria[i];
+				indice++;
+
+			}
+
+		}
+		return filtrado;
+	}
+
+
+	public Pagina[] ordenarBusqueda(String[] palabras) {
+
+		Pagina[] filtrado = this.obtenerBusqueda(palabras);
+		Pagina aux;
+
+		for(int i = 0; i < filtrado.length - 1; i++) {
+
+			for(int j = 0; j < filtrado.length - 1; j++) {
+
+				if(filtrado[j+1].getCoincidencias(palabras) > filtrado[j].getCoincidencias(palabras)) {
+
+					aux = filtrado[j + 1];
+					filtrado[j+1] = filtrado[j];
+					filtrado[j] = aux;
+
+				} else if(filtrado[j+1].getCoincidencias(palabras) == filtrado[j].getCoincidencias(palabras)) {
+
+					if(filtrado[j+1].getPageRank() > filtrado[j].getPageRank()) {
+
+						aux = filtrado[j + 1];
+						filtrado[j+1] = filtrado[j];
+						filtrado[j] = aux;
+					}
+
+				}
+
+			}
+		}
+		return filtrado;
+	}
+
+
+	public boolean comprobarPagina(String hipervinculo) {
+
+		boolean resultado = false;
+
+		for(int i = 0; i < this.memoria.length; i++) {
+
+			if(memoria[i].getUrl().toLowerCase().equals(hipervinculo.toLowerCase())) {
+
+				resultado = true;
+
+			}
+
+		}
+
+		return resultado;
+
+	}
+
+	public Pagina obtenerPagina(String hipervinculo) {
+
+		Pagina devuelto = null;
+
+
+		for (int i = 0; i < this.memoria.length; i++) {
+
+			if(this.memoria[i].getUrl().toLowerCase().equals(hipervinculo.toLowerCase())) {
+
+				devuelto = memoria[i];
+
+
+			}
+
+
+		}
+
+		return devuelto;
+
+	}
+
+
+
 }
