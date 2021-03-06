@@ -116,11 +116,12 @@ public class Menu {
 //La siguiente linea crea un array apartir de lo que ha entrado por teclado, separando las palabras por espacios.
 				String[] arrayClave=entradaClaves.split(" ");
 				
-//Con el array obtenido antes llamamos al metodo que cogera las coincidencias y ordenara las paginas, luego te lo enseñara.
-				buscador.ordenarBusqueda(arrayClave);
-				
-				//TODO Arreglar los resultados que enseña por pantalla
-				System.out.println(arrayClave.toString());
+//Con el array obtenido antes llamamos al metodo que cogera las coincidencias y ordenara las paginas.
+				Pagina[] resultado=buscador.ordenarBusqueda(arrayClave);
+//Luego recorremos ese array mostrando por pantalla.				
+				for (Pagina paginas : resultado) {
+					System.out.println(paginas);
+				}
 				
 				break;
 			}
