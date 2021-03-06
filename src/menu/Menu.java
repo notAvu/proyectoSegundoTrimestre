@@ -59,13 +59,15 @@ public class Menu {
 				System.out.println("\n"+ASTERISCOS);
 				System.out.println("-¿Cual es la URL?");
 				url=sc.next();
-				System.out.println("\n -¿Cual es la descripcion? (separadas por un \"-\") ");
+				System.out.println("\n -¿Cual es la descripcion?");
 				descripcion=sc.next();
+				descripcion=descripcion+sc.nextLine();
 				System.out.println("\n -¿Cual es su pageRank?");
 				pageRank=sc.nextInt();
-				System.out.println("\n -Indique el listado de palabras clave (separadas por un \"-\") ");
+				System.out.println("\n -Indique el listado de palabras clave (separadas por un espacio) ");
 				palabrasClaves=sc.next();
-				String[] palabras= palabrasClaves.split("-");
+				palabrasClaves=palabrasClaves+sc.nextLine();
+				String[] palabras= palabrasClaves.split(" ");
 				System.out.println("\n -Pagina hacia la que enlaza (Si no enlaza a ninguna pagina, deje en blanco la respuesta):");
 
 				
@@ -106,12 +108,13 @@ public class Menu {
 			}
 			case "2": {
 				System.out.println(ASTERISCOS);
-				System.out.println("Escribe las palabras clave: (separadas por un \"-\") ");
+				System.out.println("Escribe las palabras clave: (separadas por un espacio) ");
 				entradaClaves=sc.next();
+				entradaClaves=entradaClaves+sc.nextLine();
 				System.out.println("Resultados:");
 				
 //La siguiente linea crea un array apartir de lo que ha entrado por teclado, separando las palabras por espacios.
-				String[] arrayClave=entradaClaves.split("-");
+				String[] arrayClave=entradaClaves.split(" ");
 				
 //Con el array obtenido antes llamamos al metodo que cogera las coincidencias y ordenara las paginas, luego te lo enseñara.
 				buscador.ordenarBusqueda(arrayClave);
