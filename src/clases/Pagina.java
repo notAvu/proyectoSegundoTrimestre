@@ -104,7 +104,7 @@ public class Pagina {
 		{
 			String url=this.getUrl();
 			String desc=this.getDescripcion();
-			String devolver=url+" "+desc;
+			String devolver="	"+url+"\n"+desc;
 			return devolver;
 		}
 		/**
