@@ -59,15 +59,15 @@ public class Menu {
 				System.out.println("\n"+ASTERISCOS);
 				System.out.println("-¿Cual es la URL?");
 				url=sc.next();
-				System.out.println("\n -¿Cual es la descripcion?");
+				System.out.println("\n -¿Cual es la descripcion? (separadas por un \"-\") ");
 				descripcion=sc.next();
 				System.out.println("\n -¿Cual es su pageRank?");
 				pageRank=sc.nextInt();
-				System.out.println("\n -Indique el listado de palabras clave");
+				System.out.println("\n -Indique el listado de palabras clave (separadas por un \"-\") ");
 				palabrasClaves=sc.next();
-				String[] palabras= palabrasClaves.split(" ");
+				String[] palabras= palabrasClaves.split("-");
 				System.out.println("\n -Pagina hacia la que enlaza (Si no enlaza a ninguna pagina, deje en blanco la respuesta):");
-				String hipervinculo=sc.next();
+
 				
 				 System.out.println("\n 1.Ingresar sin hipervinculo");
 			     System.out.println("\n 2.Ingresar con hipervinculo");
@@ -84,7 +84,8 @@ public class Menu {
 			                break;
 
 			            case 2:
-			            	
+			            	System.out.println("Escribe el hipervinculo:");
+							String hipervinculo=sc.next();
 					         if(buscador.comprobarPagina(hipervinculo)) 
 					         {
 					        	 
@@ -105,15 +106,18 @@ public class Menu {
 			}
 			case "2": {
 				System.out.println(ASTERISCOS);
-				System.out.println("Escribe las palabras clave:");
+				System.out.println("Escribe las palabras clave: (separadas por un \"-\") ");
 				entradaClaves=sc.next();
 				System.out.println("Resultados:");
 				
 //La siguiente linea crea un array apartir de lo que ha entrado por teclado, separando las palabras por espacios.
-				String[] arrayClave=entradaClaves.split(" ");
+				String[] arrayClave=entradaClaves.split("-");
 				
 //Con el array obtenido antes llamamos al metodo que cogera las coincidencias y ordenara las paginas, luego te lo enseñara.
-				System.out.println(buscador.ordenarBusqueda(arrayClave));
+				buscador.ordenarBusqueda(arrayClave);
+				
+				//TODO Arreglar los resultados que enseña por pantalla
+				System.out.println(arrayClave.toString());
 				
 				break;
 			}
