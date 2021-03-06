@@ -22,7 +22,7 @@ public class Menu {
 
 
 	}
-	final static String  Asteriscos="**********************************************";
+	private final static String  ASTERISCOS="**********************************************";
 	/** Este metodo te muestra las lineas del menu que te pregunta
 	 * 
 	 * Postcondicion:Este metodo muestra por pantalla el menu.
@@ -31,33 +31,32 @@ public class Menu {
 	 */
 	public static void visualizador() {
 		
-		System.out.println(Asteriscos);
+		System.out.println(ASTERISCOS);
 		System.out.println("\n"+"¿Qué desea realizar?");
 		System.out.println("\n"+"1- Dar de alta una nueva página web");
 		System.out.println("\n"+"2.- Buscar páginas por palabras clave");
 		System.out.println("\n"+"3.- Salir");
-		System.out.println("\n"+Asteriscos);
+		System.out.println("\n"+ASTERISCOS);
 	}
 	
 	/**
 	 * 
 	 */
 	public static void maneja() {
-		visualizador();
 		Scanner sc= new Scanner(System.in);
 		String opcion;
 		String url;
 		String descripcion;
 		int pageRank;
 		String palabrasClaves;
+		String entradaClaves;
 		do {
-			//TODO creo el visualizador deberia estar dentro del bucle para que el usuario siempre pueda ver las opciones
+			visualizador();
 			System.out.println("Elige opcion.");
 			opcion=sc.next();
 			switch (opcion) {
 			case "1": {
-				//TODO Llamar metodo "Dar alta una pagina nueva"
-				System.out.println("\n"+Asteriscos);
+				System.out.println("\n"+ASTERISCOS);
 				System.out.println("-¿Cual es la URL?");
 				url=sc.next();
 				System.out.println("\n -¿Cual es la descripcion?");
@@ -70,12 +69,11 @@ public class Menu {
 				System.out.println("\n -Pagina hacia la que enlaza (Si no enlaza a ninguna pagina, deje en blanco la respuesta):");
 				String hipervinculo=sc.next();
 				
-				 System.out.println("1.Ingresar sin hipervinculo");
-			     System.out.println("2.Ingresar con hipervinculo");
-
-			        Scanner teclado = new Scanner(System.in);
-
-			        int eleccion = teclado.nextInt();
+				 System.out.println("\n 1.Ingresar sin hipervinculo");
+			     System.out.println("\n 2.Ingresar con hipervinculo");
+//Con lo siguiente vamos a pedirle si tiene o no un hipervinculo  la pagina que quiere añadir, si no lo tiene, se crea la pagina y se añade, si por el contrario 
+//si tiene comprobara si existe la pagina y luego la creara.
+			        int eleccion = sc.nextInt();
 
 			        switch (eleccion) {
 
@@ -94,37 +92,41 @@ public class Menu {
 					             Pagina paginaAniadida=new Pagina(url, descripcion, pageRank, paginaDevuelta, palabras);
 					             buscador.agregarPagina(paginaAniadida);
 					             
-					         }else 
-					         {
-
+					         }else {
 					             System.out.println("no hay pagina asi");
 					             opcion="4";
-					         
-
-			                break;
-
 					         }
+					         
+					         break;
 			        }
-		         	         
-				//Metodos para  hipervinculo, luego llamamos al metodo para dar de alta.
-				System.out.println(Asteriscos);
+				System.out.println(ASTERISCOS);
+				
 				break;
 			}
 			case "2": {
-				//TODO Llamar metodo "Buscar paginas por palabras claves"
-				System.out.println("El 2");
+				System.out.println(ASTERISCOS);
+				System.out.println("Escribe las palabras clave:");
+				entradaClaves=sc.next();
+				System.out.println("Resultados:");
+				
+//La siguiente linea crea un array apartir de lo que ha entrado por teclado, separando las palabras por espacios.
+				String[] arrayClave=entradaClaves.split(" ");
+				
+//Con el array obtenido antes llamamos al metodo que cogera las coincidencias y ordenara las paginas, luego te lo enseñara.
+				System.out.println(buscador.ordenarBusqueda(arrayClave));
+				
 				break;
 			}
 			case "3": {
 				System.out.println("Se esta cerrando el programa, pasa un buen dia.");
-				//boolean rendirse=true;
+				
 				break;
 			}
 			default:
 				System.out.println("Ese valor no es valido.");
 				break;
 			}
-		}while (!(opcion.equals("3"))); //booal rendirse  Probar con while
+		}while (!(opcion.equals("3"))); 
 		sc.close();
 	}
 }
