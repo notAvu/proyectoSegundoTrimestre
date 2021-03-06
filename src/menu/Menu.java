@@ -45,17 +45,17 @@ public class Menu {
 	public static void maneja() {
 		visualizador();
 		Scanner sc= new Scanner(System.in);
-		int opcion;
+		String opcion;
 		String url;
 		String descripcion;
 		int pageRank;
 		String palabrasClaves;
 		do {
-			
+			//TODO creo el visualizador deberia estar dentro del bucle para que el usuario siempre pueda ver las opciones
 			System.out.println("Elige opcion.");
-			opcion=sc.nextInt();
+			opcion=sc.next();
 			switch (opcion) {
-			case 1: {
+			case "1": {
 				//TODO Llamar metodo "Dar alta una pagina nueva"
 				System.out.println("\n"+Asteriscos);
 				System.out.println("-¿Cual es la URL?");
@@ -98,7 +98,7 @@ public class Menu {
 					         {
 
 					             System.out.println("no hay pagina asi");
-					             opcion=4;
+					             opcion="4";
 					         
 
 			                break;
@@ -110,12 +110,12 @@ public class Menu {
 				System.out.println(Asteriscos);
 				break;
 			}
-			case 2: {
+			case "2": {
 				//TODO Llamar metodo "Buscar paginas por palabras claves"
 				System.out.println("El 2");
 				break;
 			}
-			case 3: {
+			case "3": {
 				System.out.println("Se esta cerrando el programa, pasa un buen dia.");
 				//boolean rendirse=true;
 				break;
@@ -124,7 +124,7 @@ public class Menu {
 				System.out.println("Ese valor no es valido.");
 				break;
 			}
-		}while (opcion!=3);//booal rendirse  Probar con while
+		}while (!(opcion.equals("3"))); //booal rendirse  Probar con while
 		sc.close();
 	}
 }
