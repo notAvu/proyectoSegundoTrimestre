@@ -3,7 +3,7 @@ package menu;
 /**
  * Esta clase opera como una interfaz entre usuario y programa
  * 
- * @version 1.1
+ * @version 1.0
  * @author afernandez acandela mgomez thuecas
  *
  */
@@ -11,17 +11,11 @@ import java.util.Scanner;
 import clases.Buscador;
 import clases.Pagina;
 
-//TODO comentar metodos con javadoc
 
 public class Menu {
 	
 	static Buscador buscador= new Buscador();
 	
-	public static void io(String hiper)
-	{
-
-
-	}
 	private final static String  ASTERISCOS="**********************************************";
 	/** Este metodo te muestra las lineas del menu que te pregunta
 	 * 
@@ -40,7 +34,10 @@ public class Menu {
 	}
 	
 	/**
+	 * Metodo principal del menu
 	 * 
+	 * Precondiciones: ninguna
+	 * Postcondiciones: ninguna
 	 */
 	public static void maneja() {
 		Scanner sc= new Scanner(System.in);
@@ -96,8 +93,7 @@ public class Menu {
 					             buscador.agregarPagina(paginaAniadida);
 					             
 					         }else {
-					             System.out.println("no hay pagina asi");
-					             opcion="4";
+					             System.out.println("No hay ninguna pagina con esa url en la memoria");
 					         }
 					         
 					         break;

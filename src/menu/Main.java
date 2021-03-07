@@ -6,7 +6,7 @@ import clases.Pagina;
 /**
  * Metodo main, lo primero que ejecuta el programa, todos conocemos y amamos al metodo main
  * 
- * @version 1.1
+ * @version 1.0
  * @author afernandez acandela mgomez thuecas
  *
  */

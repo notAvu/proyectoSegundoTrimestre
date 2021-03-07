@@ -3,7 +3,7 @@ package clases;
  * Contiene los datos de paginas web, su enlace, una breve descripcion, su pagerank, 
  * una serie de palabras clave para facilitar la busqueda, y un link a otra pagina (que puede tener o no).
  * 
- * @version 1.1
+ * @version 1.0
  * @author afernandez acandela mgomez thuecas
  *
  */
@@ -91,7 +91,7 @@ public class Pagina {
 		}
 		
 		/**
-		 * Devuelve la Url del objeto junto a su descripcion
+		 * Devuelve la Url del objeto pagina junto a su descripcion
 		 * 
 		 * Entrada:ninguna
 		 * Salida:La string devolver 
