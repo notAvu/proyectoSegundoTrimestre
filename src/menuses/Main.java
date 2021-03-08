@@ -38,7 +38,7 @@ public class Main {
 								inputValido=true;
 							}else 
 							{
-								System.out.println("No existe esa página");
+								Menu.paginaInexistente();
 							}
 						}
 						break;
@@ -62,7 +62,7 @@ public class Main {
 				break;
 			}
 			case "3": {
-				System.out.println("Se esta cerrando el programa, pasa un buen dia.");
+				Menu.mensajeSaliendo();
 				break;
 			}
 			default:

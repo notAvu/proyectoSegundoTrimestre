@@ -53,6 +53,13 @@ public class Menu {
 		}	
 	}
 	
+	public static void paginaInexistente() {
+		System.out.println("No existe esa página");
+	}
+	
+	public static void mensajeSaliendo() {
+		System.out.println("Se esta cerrando el programa, pasa un buen dia.");
+	}
 	public static Object[] altaPagina(Scanner sc) 
 	{
 		String url;
