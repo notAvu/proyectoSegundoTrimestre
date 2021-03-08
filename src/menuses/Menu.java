@@ -41,6 +41,18 @@ public class Menu {
 		return eleccion;
 	}
 	
+	public static void opcionInvalida() {
+		System.out.println("Opción no valida");
+	}
+	
+	public static void mostrarResultados(Pagina[] resultados) {
+		if (resultados.length==0)
+			System.out.println("No se han encontrado coincidencias");
+		for (Pagina paginas : resultados) {
+			System.out.println(paginas);
+		}	
+	}
+	
 	public static Object[] altaPagina(Scanner sc) 
 	{
 		String url;
