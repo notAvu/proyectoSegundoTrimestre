@@ -29,9 +29,9 @@ public class Menu {
 		String eleccion ="";
 		
 		System.out.println(ASTERISCOS);
-		System.out.println("\n"+"¿Qué desea realizar?");
-		System.out.println("\n"+"1- Dar de alta una nueva página web");
-		System.out.println("\n"+"2.- Buscar páginas por palabras clave");
+		System.out.println("\n"+"�Que desea realizar?");
+		System.out.println("\n"+"1- Dar de alta una nueva pagina web");
+		System.out.println("\n"+"2.- Buscar paginas por palabras clave");
 		System.out.println("\n"+"3.- Salir");
 		System.out.println("\n"+ASTERISCOS);
 		System.out.println("Elige opcion.");
@@ -42,7 +42,7 @@ public class Menu {
 	}
 	
 	public static void opcionInvalida() {
-		System.out.println("Opción no valida");
+		System.out.println("Opcion no valida");
 	}
 	/**
 	* Muestra por pantalla el resultado de la busqueda
@@ -59,7 +59,7 @@ public class Menu {
 	}
 	
 	public static void paginaInexistente() {
-		System.out.println("No existe esa página");
+		System.out.println("No existe esa pagina");
 	}
 	
 	public static void mensajeSaliendo() {
@@ -80,12 +80,12 @@ public class Menu {
 		String palabrasClaves;
 		
 		System.out.println("\n"+ASTERISCOS);
-		System.out.println("-¿Cual es la URL?");
+		System.out.println("-�Cual es la URL?");
 		url=sc.next();
-		System.out.println("\n -¿Cual es la descripcion?");
+		System.out.println("\n -�Cual es la descripcion?");
 		descripcion=sc.next();
 		descripcion=descripcion+sc.nextLine();
-		System.out.println("\n -¿Cual es su pageRank?");
+		System.out.println("\n -�Cual es su pageRank?");
 		pageRank=sc.nextInt();
 		System.out.println("\n -Indique el listado de palabras clave (separadas por un espacio) ");
 		palabrasClaves=sc.next();

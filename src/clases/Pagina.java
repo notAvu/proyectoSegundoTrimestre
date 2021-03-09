@@ -17,19 +17,6 @@ public class Pagina {
 	  
 	 
 	  	//Metodos
-	  /*
-	   * Tenemos dos metodos constructores,uno para crear la pagina con todos sus parametros y otro para 
-	   * crear una pagina que no tenga hipervinculo
-	   */
-	  	public Pagina(String url,String descripcion, int pageRank, Pagina link,String[] palabrasClave) 
-		{
-			 this.descripcion=descripcion;
-			 this.hipervinculo=link.getUrl();
-			 link.setPageRank(link.getPageRank()+1);//Aumenta en 1 el pagerank de la p·gina a la que hace referencia
-			 this.pageRank=pageRank;
-			 this.url=url;
-			 this.palabrasClave=palabrasClave;			 
-		}
 	  	public Pagina(String url,String descripcion, int pageRank,String[] palabrasClave) 
 		{
 			 this.descripcion=descripcion;
@@ -87,7 +74,7 @@ public class Pagina {
 		public void setHipervinculo(Pagina link) 
 		{
 			this.hipervinculo = link.getUrl();
-			link.setPageRank(link.getPageRank()+1);//Aumenta en 1 el pagerank de la p·gina a la que hace referencia
+			link.setPageRank(link.getPageRank()+1);//Aumenta en 1 el pagerank de la p√°gina a la que hace referencia
 		}
 		
 		/**
