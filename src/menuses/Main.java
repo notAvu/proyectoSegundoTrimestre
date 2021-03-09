@@ -24,7 +24,8 @@ public class Main {
 			case "1"://agregar pagina
 				{
 				Object[] array=Menu.altaPagina(sc);
-				buscador.agregarPagina(new Pagina(array[0].toString(),array[1].toString(),(int)array[2],(String[])array[3]));//agrega una pagina con los datos del metodo anterior
+				Pagina nuevaPagina=new Pagina(array[0].toString(),array[1].toString(),(int)array[2],(String[])array[3]);
+				buscador.agregarPagina(nuevaPagina);//agrega una pagina con los datos del metodo anterior
 				String eleccion;
 				do {
 					eleccion=Menu.preguntarHipervinculo(sc);//el usuario decide si quiere añadir un hipervinculo a la pagina que acaba de crear
@@ -37,7 +38,8 @@ public class Main {
 							if(buscador.comprobarPagina(link)) 
 							{
 								Pagina vinculada=buscador.obtenerPagina(link);
-								vinculada.setPageRank(vinculada.getPageRank()+1);
+								nuevaPagina.setHipervinculo(vinculada);
+								
 								inputValido=true;
 							}else 
 							{
