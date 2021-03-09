@@ -71,7 +71,7 @@ class Pruebas {
 		buscador.agregarPagina(new Pagina("prueba.com", "prueba", 1, arrayprueba));
 		assertEquals("prueba.com prueba", buscador.obtenerPagina("prueba.com"));
 	}
-	
+
 	//Estas pruebas unitarias en JUnit y sus comentarios son responsabilidad de Antonio, espero que saquen una sonrisa en quien lo lea porque las lagrimas ya me las he usado yo todas :')
 	
 	
