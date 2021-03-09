@@ -28,7 +28,7 @@ public class Main {
 				buscador.agregarPagina(nuevaPagina);//agrega una pagina con los datos del metodo anterior
 				String eleccion;
 				do {
-					eleccion=Menu.preguntarHipervinculo(sc);//el usuario decide si quiere añadir un hipervinculo a la pagina que acaba de crear
+					eleccion=Menu.preguntarHipervinculo(sc);//el usuario decide si quiere poner un hipervinculo a la pagina que acaba de crear
 					switch (eleccion) {
 					case "1" :
 						{
