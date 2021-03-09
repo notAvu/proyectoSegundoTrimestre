@@ -29,7 +29,7 @@ public class Main {
 				do {
 					eleccion=Menu.preguntarHipervinculo(sc);//el usuario decide si quiere añadir un hipervinculo a la pagina que acaba de crear
 					switch (eleccion) {
-					case "1"
+					case "1" :
 						{
 						boolean inputValido=false;
 						while(!inputValido) {
@@ -51,7 +51,7 @@ public class Main {
 						System.out.println();
 						break;//El caso dos no hace nada pero he preferido usar un switch en vez un if/else para controlar que el usuario solo pueda responder con "1" y "2".
 					}
-					default://en cualquier otro caso {
+					default: { //en cualquier otro caso
 						Menu.opcionInvalida();
 						break;
 					}
